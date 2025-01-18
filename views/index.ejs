@@ -10,9 +10,7 @@
     <div class="container">
         <h1>Current Weather in PH 👇</h1>
 
-        <form action="/get-location" method="post">
-            <!-- <label for="">Zip Code:</label>
-            <input type="text" name="zipCode"> -->
+        <form action="/get-weather" method="post">
             <label for="">City:</label>
             <input type="text" name="city">
             <button type="submit">Submit</button>
@@ -25,8 +23,8 @@
             <div class="country">
                 <h3>Country:</h3> <p> <%= data.sys.country %> </p>
             </div>
-            <div class="location">
-                <h3>Location:</h3> <p> <%= data.name %> </p>
+            <div class="city">
+                <h3>City:</h3> <p> <%= data.name %> </p>
             </div>
             <div class="weather">
                 <h3>Weather:</h3>

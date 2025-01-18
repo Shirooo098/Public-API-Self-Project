@@ -4,7 +4,6 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
-const GEOAPI_URL = "http://api.openweathermap.org/geo/1.0/zip?";
 const WEATHERAPI_URL = "https://api.openweathermap.org/data/2.5/weather?";
 const API_TOKEN = "2755ab8796f4ba56de06ee465fdfdebf";
 const iso = "PH";
@@ -16,7 +15,7 @@ app.get("/",  async (req, res) => {
     res.render("index.ejs");
 });
 
-app.post("/get-location", async (req, res) => {
+app.post("/get-weather", async (req, res) => {
     try{
         const city = req.body.city;
         const weatherResult = await axios.get(WEATHERAPI_URL, {

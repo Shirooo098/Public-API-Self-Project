@@ -5,7 +5,7 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body{
-    background-color: #f0f3fe;
+    background-color: #e2e5f0;
     height: 90svh;
     display: flex;
     flex-direction: column;
@@ -25,6 +25,37 @@ body{
     border-radius: 5px;
 }
 
+.container > h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+}
+form{
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+form > label {
+    font-size: clamp(.75rem, 2.5vw, 1.5rem);
+}
+
+input[type="text"]{
+    padding: .25em;
+}
+button{
+    width: 5em;
+    background-color: #e96e50;
+    padding: .25em;
+    border: none;
+    color: #e2e5f0;
+    transition: 0.2s ease-in;
+}
+
+button:hover{
+    background-color: #c3593e;
+    cursor: pointer;
+}
+
 section{
     display: grid;
     justify-content: center;
@@ -40,15 +71,38 @@ section > div{
     background-color: #fff;
     border-radius: 5px;
 }
-
-.country .location{
-    grid-column: span 1;
+section  p {
+    font-size: clamp(.75rem, 2.5vw, 1.5rem);
 }
+
+.country .city{
+    grid-column: span 1;
+    
+}
+
 
 .weather {
     grid-column: span 2;
+    height: 10em;
 }
+
+h3{
+    font-size: clamp(1rem, 3vw, 2rem);
+}
+
 .weather-wrapper{
+    height: auto;
     display: flex;
-    justify-content: space-around;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+.weather-wrapper img{
+    height: 5svh;
+    width: 4svw;
+    aspect-ratio: 1 / 1;
+}
+
+p, h3{
+    color: #15253A;
 }
