@@ -1,14 +1,31 @@
 import express from "express";
 import axios from "axios";
+import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
-const API_URL = "https://api.openweathermap.org/data/3.0/onecall"
+const GEOAPI_URL = "http://api.openweathermap.org/geo/1.0/zip?";
+const API_TOKEN = "2755ab8796f4ba56de06ee465fdfdebf";
+
+app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended : true}));
 
 app.get("/",  async (req, res) => {
+    res.render("index.ejs", { content : "Waiting for Location..."});
+});
+
+app.post("/get-location", async (req, res) => {
     try{
-        const result = await axios.get(`https://api.openweathermap.org/data/3.0/onecall`);
-        res.render("index.ejs", { content : result.data});
+        const zipCode = req.body.zipCode;
+        const iso = req.body.iso;
+        const result = await axios.get(GEOAPI_URL, {
+            params: {
+                zip: `${zipCode},${iso}`,
+                appid: API_TOKEN
+            }
+        });
+        console.log(result.data);
+        res.render("index.ejs", { data: result.data});
     }catch(error){
         console.log(error.response.data);
     }
