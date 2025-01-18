@@ -1,11 +1,14 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import 'dotenv/config';
+
+console.log(process.env);
 
 const app = express();
 const port = 3000;
 const WEATHERAPI_URL = "https://api.openweathermap.org/data/2.5/weather?";
-const API_TOKEN = "2755ab8796f4ba56de06ee465fdfdebf";
+const API_TOKEN = process.env.API_TOKEN;
 const iso = "PH";
 
 app.use(express.static("public"));
