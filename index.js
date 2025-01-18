@@ -18,20 +18,10 @@ app.get("/",  async (req, res) => {
 
 app.post("/get-location", async (req, res) => {
     try{
-        const zipCode = req.body.zipCode;
-        const locResult = await axios.get(GEOAPI_URL, {
-            params: {
-                zip: `${zipCode},${iso}`,
-                appid: API_TOKEN
-            }
-        });
-
-        const {lat, lon} = locResult.data;
-
+        const city = req.body.city;
         const weatherResult = await axios.get(WEATHERAPI_URL, {
             params: {
-                lat: lat,
-                lon: lon,
+                q: `${city},${iso}`,
                 appid: API_TOKEN,
                 units: "metric",
             },

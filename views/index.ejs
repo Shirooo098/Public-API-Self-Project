@@ -11,8 +11,10 @@
         <h1>Current Weather in PH 👇</h1>
 
         <form action="/get-location" method="post">
-            <label for="">Zip Code:</label>
-            <input type="text" name="zipCode">
+            <!-- <label for="">Zip Code:</label>
+            <input type="text" name="zipCode"> -->
+            <label for="">City:</label>
+            <input type="text" name="city">
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -20,10 +22,20 @@
     <section>
         <%if(locals.data){%>
             <% const weather = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)%>
-            <h3>Country: <%= data.sys.country %></h3>
-            <h3>Name: <%= data.name %></h3>
-            <h3>Temprature: <%= data.main.temp %>°C</h3>
-            <h3>Weather: <%= weather%></h3>
+            <div class="country">
+                <h3>Country:</h3> <p> <%= data.sys.country %> </p>
+            </div>
+            <div class="location">
+                <h3>Location:</h3> <p> <%= data.name %> </p>
+            </div>
+            <div class="weather">
+                <h3>Weather:</h3>
+                    <div class="weather-wrapper">
+                        <img src="http://openweathermap.org/img/wn/<%= data.weather[0].icon %>.png" alt=""> 
+                        <p> <%= Math.trunc(data.main.temp)%>°C </p>
+                        <p> <%= weather%> </p>
+                    </div>
+            </div>
         <% }%>
 
         <% if(locals.error){%>
