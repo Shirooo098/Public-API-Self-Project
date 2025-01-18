@@ -8,13 +8,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Current Weather in Location 👇</h1>
+        <h1>Current Weather in PH 👇</h1>
 
         <form action="/get-location" method="post">
             <label for="">Zip Code:</label>
             <input type="text" name="zipCode">
-            <label for="">ISO Code:</label>
-            <input type="text" name="iso">
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -22,14 +20,14 @@
     <section>
         <%if(locals.data){%>
             <% const weather = data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)%>
-            <h3>Name: <%= data.name %></h3>
             <h3>Country: <%= data.sys.country %></h3>
-            <h3>Temprature: <%= data.main.temp %></h3>
+            <h3>Name: <%= data.name %></h3>
+            <h3>Temprature: <%= data.main.temp %>°C</h3>
             <h3>Weather: <%= weather%></h3>
         <% }%>
 
         <% if(locals.error){%>
-            <h2><%= error %></h2>
+            <h2><%= status%> <%= error %></h2>
         <% } %>
             
     </section>
